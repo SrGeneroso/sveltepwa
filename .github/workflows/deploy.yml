@@ -13,18 +13,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Get Repo Name
-        id: repo_name
-        run: echo "REPO_NAME=$(basename $GITHUB_REPOSITORY)" >> $GITHUB_ENV
-
-      - name: Set Github as enviroment check
-        id: host_to_gh
-        run: echo "GITHUB_ACTIONS=true" >> $GITHUB_ENV
-
       - name: Install dependencies and build
         run: |
-          REPO_NAME=${{ env.REPO_NAME }}
-          GITHUB_ACTIONS=${{ env.GITHUB_ACTIONS }}
           npm install
           npm run build
 
