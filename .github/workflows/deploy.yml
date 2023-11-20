@@ -23,7 +23,8 @@ jobs:
 
       - name: Install dependencies and build
         run: |
-
+          REPO_NAME=${{ env.REPO_NAME }}
+          GITHUB_ACTIONS=${{ env.GITHUB_ACTIONS }}
           npm install
           npm run build
 
