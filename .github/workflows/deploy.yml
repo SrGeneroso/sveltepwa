@@ -15,7 +15,7 @@ jobs:
 
       - name: Get Repo Name
         id: repo_name
-        run: echo "::set-env name=REPO_NAME::$(basename $GITHUB_REPOSITORY)"
+        run: echo "REPO_NAME=$(basename $GITHUB_REPOSITORY)" >> $GITHUB_ENV
 
 
       - name: Install dependencies and build
