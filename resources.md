@@ -14,3 +14,4 @@ https://stackoverflow.com/questions/75061837/github-actions-node-js-12-actions-a
 https://github.com/UnlyEd/github-action-await-vercel/blob/cee5b33a0725899c2a78be7d73819114f6aac745/action.yml#L17
 https://stackoverflow.com/questions/76023778/action-failed-with-the-process-usr-bin-git-failed-with-exit-code-128
 https://dev.to/daslaw/deploying-a-vite-app-to-github-pages-using-github-actions-a-step-by-step-guide-2p4h
+https://dev.to/daslaw/deploying-a-vite-app-to-github-pages-using-github-actions-a-step-by-step-guide-2p4h
