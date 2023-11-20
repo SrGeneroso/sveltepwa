@@ -6,6 +6,7 @@ import { manifestConfig } from "./pwa.config"
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: process.env.GITHUB_ACTIONS ? process.env.REPO_NAME : '/',
   plugins: [
     svelte(),
     VitePWA({

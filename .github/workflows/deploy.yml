@@ -13,8 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Get Repo Name
+        id: repo_name
+        run: echo "::set-env name=REPO_NAME::$(basename $GITHUB_REPOSITORY)"
+
+
       - name: Install dependencies and build
         run: |
+          GITHUB_ACTIONS=true
           npm install
           npm run build
 
