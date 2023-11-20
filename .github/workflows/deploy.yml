@@ -19,7 +19,7 @@ jobs:
 
       - name: Set Github as enviroment check
         id: host_to_gh
-        run: echo "GITHUB_ACTIONS=true >> $GITHUB_ENV
+        run: echo "GITHUB_ACTIONS=true" >> $GITHUB_ENV
 
       - name: Install dependencies and build
         run: |
