@@ -10,3 +10,6 @@ https://www.stefanjudis.com/notes/how-to-define-progressive-web-app-pwa-screensh
 https://ultimatecourses.com/blog/ultimate-guide-pwa-workbox
 https://dev.to/masakudamatsu/favicon-nightmare-how-to-maintain-sanity-3al7
 
+https://stackoverflow.com/questions/75061837/github-actions-node-js-12-actions-are-deprecated-although-i-upgraded-everyt
+https://github.com/UnlyEd/github-action-await-vercel/blob/cee5b33a0725899c2a78be7d73819114f6aac745/action.yml#L17
+https://stackoverflow.com/questions/76023778/action-failed-with-the-process-usr-bin-git-failed-with-exit-code-128
