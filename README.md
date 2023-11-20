@@ -1,6 +1,6 @@
 # Svelte + Vite
 
-This template should help get you started developing with Svelte in Vite.
+This template should help get you started developing with Svelte in Vite with the adittion of PWA.
 
 ## Recommended IDE Setup
 
@@ -45,3 +45,8 @@ If you have state that's important to retain within a component, consider creati
 import { writable } from 'svelte/store'
 export default writable(0)
 ```
+## We add also PWA
+We also add [PWA Vite Plugin](https://vite-pwa-org.netlify.app/), [PWA Assets Generator](https://vite-pwa-org.netlify.app/assets-generator/) and [Puppeteer](https://pptr.dev/) to automate some task needed to create a complete featured PWA.
+Currently is a hack but easy to begin.
+This repo has 2 customs special files.
+First, you have a `pwa.config.js` where you can customize your web manifest. Also, you have `screenshots.js` to setup puppeteer to take screenshot for a full rich PWA experience.

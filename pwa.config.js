@@ -32,13 +32,13 @@ export const manifestConfig = {
             {
               "src": "screenshot1.png",
               "sizes": "1920x1080",
-              "type": "image/webp",
+              "type": "image/png",
               "form_factor": "wide"
             },
             {
               "src": "screenshot2.png",
               "sizes": "1080x1920",
-              "type": "image/webp",
+              "type": "image/png",
               "form_factor": "narrow"
             }
           ]
