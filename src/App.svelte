@@ -5,14 +5,14 @@
 
 <main>
   <div>
-    <a href="http://localhost:5173" target="_blank" rel="noreferrer">
-      <img src={Logo} class="logo" alt="Logo" />
-    </a>
     <a href="https://svelte.dev" target="_blank" rel="noreferrer">
       <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
     </a>
+    <a href="http://localhost:5173" target="_blank" rel="noreferrer">
+      <img src={Logo} class="logo" alt="Logo" />
+    </a>
   </div>
-  <h1>Vite + Svelte PWA</h1>
+  <h1>Svelte + Vite PWA</h1>
 </main>
 
 <style>
