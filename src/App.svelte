@@ -13,6 +13,11 @@
     </a>
   </div>
   <h1>Svelte + Vite PWA</h1>
+  <p>Made with <a href="https://vite-pwa-org.netlify.app/" target="_blank" rel="noopener noreferrer">PWA Vite Plugin</a></p>
+
+  <p>Augmented with <a href="https://vite-pwa-org.netlify.app/assets-generator/" target="_blank" rel="noopener noreferrer">assets generator</a> and custom screenshot generator using Puppeteer with dark mode 😎</p>
+
+  <p>Customizable by PWA config file</p>
 </main>
 
 <style>
