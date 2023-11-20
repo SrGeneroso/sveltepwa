@@ -1,0 +1,19 @@
+{
+  "name": "sveltepwa",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run generate-pwa-assets && vite",
+    "generate-pwa-assets": "pwa-assets-generator --preset minimal public/logo.svg",
+    "build": "npm run generate-pwa-assets && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@vite-pwa/assets-generator": "^0.0.11",
+    "svelte": "^4.2.3",
+    "vite": "^5.0.0",
+    "vite-plugin-pwa": "^0.17.0"
+  }
+}
