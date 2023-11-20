@@ -18,7 +18,7 @@ jobs:
         run: echo "REPO_NAME=$(basename $GITHUB_REPOSITORY)" >> $GITHUB_ENV
 
       - name: Set Github as enviroment check
-        id: host to gh
+        id: host_to_gh
         run: echo "GITHUB_ACTIONS=true >> $GITHUB_ENV
 
       - name: Install dependencies and build
