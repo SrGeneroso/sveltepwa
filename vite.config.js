@@ -5,7 +5,7 @@ import { manifestConfig } from './pwa.config'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/sveltepwa/', //deploying to github pages needs an extra path
+  base: process.env.REPO_NAME ? `/${process.env.REPO_NAME}/` : '/', // Set base dynamically for github pages
   plugins: [
     svelte(),
     VitePWA({
