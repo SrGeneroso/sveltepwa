@@ -1,6 +1,6 @@
 <script>
   import svelteLogo from './assets/svelte.svg'
-  import Logo from '/logo.svg'
+  import Logo from '/favicon.svg'
 </script>
 
 <main>
@@ -13,9 +13,21 @@
     </a>
   </div>
   <h1>Svelte + Vite PWA</h1>
-  <p>Made with <a href="https://vite-pwa-org.netlify.app/" target="_blank" rel="noopener noreferrer">PWA Vite Plugin</a></p>
+  <p>
+    Made with <a
+      href="https://vite-pwa-org.netlify.app/"
+      target="_blank"
+      rel="noopener noreferrer">PWA Vite Plugin</a
+    >
+  </p>
 
-  <p>Augmented with <a href="https://vite-pwa-org.netlify.app/assets-generator/" target="_blank" rel="noopener noreferrer">assets generator</a> and custom screenshot generator using Puppeteer with dark mode 😎</p>
+  <p>
+    Augmented with <a
+      href="https://vite-pwa-org.netlify.app/assets-generator/"
+      target="_blank"
+      rel="noopener noreferrer">assets generator</a
+    > and custom screenshot generator using Puppeteer with dark mode 😎
+  </p>
 
   <p>Customizable by PWA config file</p>
 </main>
