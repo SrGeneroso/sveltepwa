@@ -1,63 +1,62 @@
 import puppeteer from 'puppeteer'
 import { spawn } from 'child_process'
 
-
 let viteProcess
 
-// Function to start Vite server
+// Function to start Vite server ** from: https://stackoverflow.com/questions/28070796/node-js-killing-sub-processes-of-childprocessspawn
 function startViteServer() {
-  viteProcess = spawn('npm', ['run', 'dev']) // Replace with your Vite start command
+	viteProcess = spawn('npm', ['run', 'dev'], {
+		stdio: ['ignore', 'pipe', 'pipe'],
+		detached: true
+	})
 
-  viteProcess.stdout.on('data', (data) => {
-    const output = data.toString()
-    console.log(output) // Log Vite output to the console
+	viteProcess.stdout.pipe(process.stdout)
+	viteProcess.stderr.pipe(process.stderr)
 
-    // Extract port number from the Vite server output
-    const portMatch = output.match(/Local:\s+http:\/\/localhost:(\d+)/)
-    if (portMatch) {
-      const port = portMatch[1]
-      console.log(`Vite server running on port ${port}`)
-      runPuppeteerScript(port)
-    }
-  })
+	viteProcess.stdout.on('data', data => {
+		const output = data.toString()
 
-  // Listen for exit event of the child process
-  viteProcess.on('exit', (code, signal) => {
-    console.log(
-      `Vite server process exited with code ${code} and signal ${signal}`
-    )
-  })
+		// Extract port number from the Vite server output
+		const portMatch = output.match(/Local:\s+http:\/\/localhost:(\d+)/)
+		if (portMatch) {
+			const port = portMatch[1]
+			runPuppeteerScript(port)
+		}
+	})
+
+	// Listen for exit event of the child process
+	viteProcess.on('exit', () => process.exit(0))
 }
 
 async function runPuppeteerScript(port) {
-  const browser = await puppeteer.launch({ headless: 'new' })
-  const page = await browser.newPage()
+	// Set dark or light mode for the screenshots
+	const colorScheme = !process.argv.length < 3 && process.argv[2] === 'light' ? 'light' : 'dark'
+	//Set Path to save image into
+	const path = !process.argv.length < 4 ? process.argv[3] : ''
 
-  //Set browser to dark mode
-  await page.emulateMediaFeatures([
-    {
-      name: 'prefers-color-scheme',
-      value: 'dark'
-    }
-  ])
+	const browser = await puppeteer.launch({ headless: 'new' })
+	const page = await browser.newPage()
 
-  // Navigate to the URL served by Vite
-  await page.goto(`http://localhost:${port}`)
+	await page.emulateMediaFeatures([
+		{
+			name: 'prefers-color-scheme',
+			value: colorScheme
+		}
+	])
 
-  // Take a screenshot or perform interactions with the page
-  await page.setViewport({ width: 1920, height: 1080 })
-  await page.screenshot({ path: 'public/screenshot1.png' })
+	await page.goto(`http://localhost:${port}`)
 
-  await page.setViewport({ width: 1080, height: 1920 })
-  await page.screenshot({ path: 'public/screenshot2.png' })
+	await page.setViewport({ width: 1920, height: 1080 })
+	await page.screenshot({ path: `${path}/screenshot1.png` })
+	await page.setViewport({ width: 1080, height: 1920 })
+	await page.screenshot({ path: `${path}/screenshot2.png` })
 
-  // Close Puppeteer and terminate the spawned process
-  await browser.close()
-  console.log('-- Screenshots Ready --')
-  if (viteProcess) {
-    console.log('Killing Vite Now')
-    viteProcess.kill('SIGINT') // Send SIGINT signal to terminate Vite server
-  }
+	// Close Puppeteer and terminate the spawned process
+	await browser.close()
+	console.log('\n-- Screenshots Ready --\n')
+	if (viteProcess) {
+		process.kill(-viteProcess.pid)
+	}
 }
 
 // Start the Vite server
