@@ -21,7 +21,6 @@ function startViteServer() {
 		if (portMatch) {
 			const port = portMatch[1]
 			const pathToHome = portMatch[2]
-			console.log(`path is ${path}`)
 			runPuppeteerScript(port, pathToHome)
 		}
 	})
