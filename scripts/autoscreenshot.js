@@ -17,10 +17,12 @@ function startViteServer() {
 		const output = data.toString()
 
 		// Extract port number from the Vite server output
-		const portMatch = output.match(/Local:\s+http:\/\/localhost:(\d+)/)
+		const portMatch = output.match(/Local:\s+http:\/\/localhost:(\d+)(\/.*)?/)
 		if (portMatch) {
 			const port = portMatch[1]
-			runPuppeteerScript(port)
+			const path = portMatch[2]
+			console.log(`path is ${path}`)
+			runPuppeteerScript(port, path)
 		}
 	})
 
@@ -28,7 +30,7 @@ function startViteServer() {
 	viteProcess.on('exit', () => process.exit(0))
 }
 
-async function runPuppeteerScript(port) {
+async function runPuppeteerScript(port, path) {
 	// Set dark or light mode for the screenshots
 	const colorScheme = !process.argv.length < 3 && process.argv[2] === 'light' ? 'light' : 'dark'
 	//Set Path to save image into
@@ -44,7 +46,7 @@ async function runPuppeteerScript(port) {
 		}
 	])
 
-	await page.goto(`http://localhost:${port}`)
+	await page.goto(`http://localhost:${port}${path}`)
 
 	await page.setViewport({ width: 1920, height: 1080 })
 	await page.screenshot({ path: `${path}/screenshot1.png` })
