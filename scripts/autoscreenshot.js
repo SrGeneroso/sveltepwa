@@ -33,7 +33,7 @@ async function runPuppeteerScript(port, pathToHome) {
 	// Set dark or light mode for the screenshots
 	const colorScheme = !process.argv.length < 3 && process.argv[2] === 'light' ? 'light' : 'dark'
 	//Set Path to save image into
-	const path = !process.argv.length < 4 ? process.argv[3] : ''
+	const userPath = !process.argv.length < 4 ? process.argv[3] : ''
 
 	const browser = await puppeteer.launch({ headless: 'new' })
 	const page = await browser.newPage()
@@ -48,9 +48,9 @@ async function runPuppeteerScript(port, pathToHome) {
 	await page.goto(`http://localhost:${port}${pathToHome}`)
 
 	await page.setViewport({ width: 1920, height: 1080 })
-	await page.screenshot({ path: `.${pathToHome}${path}screenshot1.png` })
+	await page.screenshot({ path: `.${pathToHome}${userPath}screenshot1.png` })
 	await page.setViewport({ width: 1080, height: 1920 })
-	await page.screenshot({ path: `.${pathToHome}${path}screenshot2.png` })
+	await page.screenshot({ path: `.${pathToHome}${userPath}screenshot2.png` })
 
 	// Close Puppeteer and terminate the spawned process
 	await browser.close()

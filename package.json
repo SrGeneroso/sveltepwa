@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run generate-pwa-assets && vite build",
+    "build": "vite build",
     "preview": "vite preview",
-    "generate-pwa-assets": "pwa-assets-generator --preset minimal public/favicon.svg && node scripts/autoscreenshot.js dark public/"
+    "pwa": "node scripts/autoscreenshot.js dark public/ && pwa-assets-generator --preset minimal public/favicon.svg"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
