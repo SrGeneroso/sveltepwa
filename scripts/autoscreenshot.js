@@ -48,9 +48,9 @@ async function runPuppeteerScript(port, pathToHome) {
 	await page.goto(`http://localhost:${port}${pathToHome}`)
 
 	await page.setViewport({ width: 1920, height: 1080 })
-	await page.screenshot({ path: `${path}/screenshot1.png` })
+	await page.screenshot({ path: `.${pathToHome}${path}screenshot1.png` })
 	await page.setViewport({ width: 1080, height: 1920 })
-	await page.screenshot({ path: `${path}/screenshot2.png` })
+	await page.screenshot({ path: `.${pathToHome}${path}screenshot2.png` })
 
 	// Close Puppeteer and terminate the spawned process
 	await browser.close()
